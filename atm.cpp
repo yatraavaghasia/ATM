@@ -134,7 +134,7 @@ public:
             }
             atm_cash = cached_state;
         } else {
-            updateATM("cash2.txt");
+            updateATM("cash.txt");
         }
 
         return dispensed_notes;
@@ -150,13 +150,14 @@ public:
             int available_notes = available_cash.at(denom);
             atm_cash.setNotes(denom, available_notes + num_notes);
         }
+        updateATM("cash.txt");
     }
 };
 
 int main()
 {
     ATM atm;
-    // int withdrawalAmount = 1000; this one will show insufficient balance
+    // int withdrawalAmount = 1000; // this one will show insufficient balance
     int withdrawalAmount = 148; // this one will result in deducted amount from the ATM
 
     cout << "Before withdrawal:\n";
@@ -178,7 +179,7 @@ int main()
     atm.showNotes();
 
     cout << "Starting deposition!" << endl;
-    // atm.depositNotes();
+    atm.depositNotes();
 
     cout << "After deposition:" << endl;
     atm.showNotes();
